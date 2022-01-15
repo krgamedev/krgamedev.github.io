@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Breakfast</title>
+    <meta name="description" content="Guess the sequence in 7 tries. A new puzzle is available daily.">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <meta name="theme-color" content="#181425">
+    <meta property="og:url" content="https://krgamedev.github.io/breakfast">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Breakfast">
+    <meta property="og:description" content="Guess the sequence in 7 tries. A new puzzle is available daily.">
+    <meta property="og:image" content="apple-touch-icon.png">
+    <link href="style.css?v=100" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Breakfast</h1>
+        <p id="game_date">► Jan 1 2000 ◄</p>
+    </header>
+    <div class="board-container">
+        <div class="board">
+            <div data-row="0" class="row">
+                <div data-row="0" data-column="0" class="peg"></div>
+                <div data-row="0" data-column="1" class="peg"></div>
+                <div data-row="0" data-column="2" class="peg"></div>
+                <div data-row="0" data-column="3" class="peg"></div>
+                <div class="small-pegs">
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                </div>
+            </div>
+            <div data-row="1" class="row">
+                <div data-row="1" data-column="0" class="peg"></div>
+                <div data-row="1" data-column="1" class="peg"></div>
+                <div data-row="1" data-column="2" class="peg"></div>
+                <div data-row="1" data-column="3" class="peg"></div>
+                <div class="small-pegs">
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                </div>
+            </div>
+            <div data-row="2" class="row">
+                <div data-row="2" data-column="0" class="peg"></div>
+                <div data-row="2" data-column="1" class="peg"></div>
+                <div data-row="2" data-column="2" class="peg"></div>
+                <div data-row="2" data-column="3" class="peg"></div>
+                <div class="small-pegs">
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                </div>
+            </div>
+            <div data-row="3" class="row">
+                <div data-row="3" data-column="0" class="peg"></div>
+                <div data-row="3" data-column="1" class="peg"></div>
+                <div data-row="3" data-column="2" class="peg"></div>
+                <div data-row="3" data-column="3" class="peg"></div>
+                <div class="small-pegs">
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                </div>
+            </div>
+            <div data-row="4" class="row">
+                <div data-row="4" data-column="0" class="peg"></div>
+                <div data-row="4" data-column="1" class="peg"></div>
+                <div data-row="4" data-column="2" class="peg"></div>
+                <div data-row="4" data-column="3" class="peg"></div>
+                <div class="small-pegs">
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                </div>
+            </div>
+            <div data-row="5" class="row">
+                <div data-row="5" data-column="0" class="peg"></div>
+                <div data-row="5" data-column="1" class="peg"></div>
+                <div data-row="5" data-column="2" class="peg"></div>
+                <div data-row="5" data-column="3" class="peg"></div>
+                <div class="small-pegs">
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                </div>
+            </div>
+            <div data-row="6" class="row">
+                <div data-row="6" data-column="0" class="peg"></div>
+                <div data-row="6" data-column="1" class="peg"></div>
+                <div data-row="6" data-column="2" class="peg"></div>
+                <div data-row="6" data-column="3" class="peg"></div>
+                <div class="small-pegs">
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                    <div class="small-peg"></div>
+                </div>
+            </div>
+            <div data-row="7" class="row solution">
+                <div data-row="7" data-column="0" class="peg unknown"></div>
+                <div data-row="7" data-column="1" class="peg unknown"></div>
+                <div data-row="7" data-column="2" class="peg unknown"></div>
+                <div data-row="7" data-column="3" class="peg unknown"></div>
+            </div>
+        </div>
+    </div>
+    <div id="status">
+        <p>Guess the sequence!</p>
+    </div>
+    <div id="buttons" class="buttons">
+        <div data-color="0" class="button color-0"></div>
+        <div data-color="1" class="button color-1"></div>
+        <div data-color="2" class="button color-2"></div>
+        <div data-color="3" class="button color-3"></div>
+        <div data-color="4" class="button color-4"></div>
+        <div data-color="5" class="button color-5"></div>
+        <div data-color="6" id="go_button" class="button go">GO</div>
+        <div data-color="7" id="clip_copy" class="button go">Share</div>
+    </div>
+    <script src="jquery.js"></script>
+    <script src="game.js?v=100"></script>
+</body>
+</html>
