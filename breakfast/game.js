@@ -86,6 +86,29 @@ function updateCurrentRowColumn() {
 updateCurrentRowColumn();
 loadState();
 
+// Help button
+$('#help_button').on('click',function(){
+    $('.modal-container').css("display", "flex");
+    $('#tutorial').each(function(){
+        $(this).css("display", "block");
+    });
+});
+// Stats button
+$('#stats_button').on('click',function(){
+    $('.modal-container').css("display", "flex");
+    $('#stats').each(function(){
+        $(this).css("display", "block");
+    });
+});
+// Modal dialog close button
+$('.modal .close-button').each(function(){
+    $(this).on('click',function(){
+        $('.modal-container').css("display", "none");
+        $('.modal').each(function(){
+            $(this).css("display", "none");
+        });
+    });
+});
 // Left and right arrows move the cursor
 $("body").keydown(function( event ) {
     if ((!won) && (!lost)) {
@@ -263,6 +286,11 @@ function guess(pegs) {
                     localStorage.setItem("wins", 1);
                 }
             }
+            var plays = parseInt(localStorage.getItem("plays"));
+            var wins = parseInt(localStorage.getItem("wins"));
+            $("#stats_played").text(plays.toString());
+            $("#stats_wins").text(wins.toString());
+            $("#stats_winrate").text(((wins/plays)*100).toFixed(2));
             
             $('#status').addClass("good");
             $('body').addClass("gameover");
@@ -296,6 +324,11 @@ function guess(pegs) {
                     localStorage.setItem("plays", 1);
                 }
             }
+            var plays = parseInt(localStorage.getItem("plays"));
+            var wins = parseInt(localStorage.getItem("wins"));
+            $("#stats_played").text(plays.toString());
+            $("#stats_wins").text(wins.toString());
+            $("#stats_winrate").text(((wins/plays)*100).toFixed(2));
             
             $('#status').addClass("bad");
             $('body').addClass("gameover");
@@ -322,6 +355,17 @@ function saveState() {
 
 // load the game state from local storage
 function loadState() {
+    if (localStorage.getItem("plays")) {
+        var plays = parseInt(localStorage.getItem("plays"));
+        var wins = parseInt(localStorage.getItem("wins"));
+        $("#stats_played").text(plays.toString());
+        $("#stats_wins").text(wins.toString());
+        $("#stats_winrate").text(((wins/plays)*100).toFixed(2));
+    }
+    else {
+        localStorage.setItem('plays', '0');
+        localStorage.setItem('wins', '0');
+    }
     if (localStorage.getItem('game_id')) {
         if (parseInt(localStorage.getItem('game_id')) == originalSeed) {
             previouslyFinished = Math.max(parseInt(localStorage.getItem('game_won')), parseInt(localStorage.getItem('game_lost')));

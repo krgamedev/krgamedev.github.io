@@ -3,6 +3,7 @@
     --text: #eeeeff;
     --selected: #1d1c30;
     --empty: #262B44;
+    --hover: #3A4466;
     --blue: #0099DB;
     --red: #E43B44;
     --yellow: #FEAE34;
@@ -19,6 +20,54 @@ html {
     height: 100%;
 }
 body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.67);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: left;
+    background: var(--background);
+    border: 2px solid var(--empty);
+    border-radius: 3px;
+    max-width: 400px;
+    margin: 10px;
+}
+.modal .close-button {
+    font-weight: bold;
+    text-align: center;
+    border-radius: 3px;
+    background: var(--empty);
+    padding: 10px;
+    cursor: pointer;
+}
+.modal .close-button:hover {
+    background: var(--hover);
+}
+#stats table {
+    margin-bottom: 10px;
+}
+#stats table tr td:nth-child(2) {
+    text-align: right;
+}
+#stats table tr td {
+    border-bottom: 1px solid var(--empty);
+}
+main {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -29,6 +78,25 @@ body {
 header {
     text-align: center;
     border-bottom: 2px solid var(--empty);
+    display: flex;
+    flex-direction: row;
+}
+.header-button-container {
+    margin-top: 24px;
+}
+.header-button {
+    border-radius: 3px;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    background: var(--empty);
+}
+.header-button:hover {
+    background: var(--hover);
+}
+.header-container {
+    flex-grow: 1;
 }
 h1 {
     font-size: 24px;
@@ -131,7 +199,7 @@ h1 {
     margin-right: 0;
 }
 .button.go:hover {
-    background-color: #3A4466;
+    background-color: var(--hover);
 }
 
 #clip_copy {
@@ -195,10 +263,10 @@ h1 {
         height: 24px;
         margin-right: 6px;
     }
-    .small-pegs {
+    .board .small-pegs {
         width: 32px;
     }
-    .small-peg {
+    .board .small-peg {
         width: 8px;
         height: 8px;
         border-radius: 2px;
@@ -214,7 +282,7 @@ h1 {
         border-width: 3px;
     }
     .peg.current { border-width: 3px; }
-    .small-peg {
+    .board .small-peg {
         width: 6px;
         height: 6px;
         margin: 3px;

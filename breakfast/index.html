@@ -13,121 +13,161 @@
     <meta property="og:title" content="Breakfast - Daily code-breaking puzzle game">
     <meta property="og:description" content="Guess the sequence in 7 tries. Come back every day for a new puzzle.">
     <meta property="og:image" content="https://krgamedev.github.io/breakfast/og.png">
-    <link href="style.css?v=100" rel="stylesheet" />
+    <link href="style.css?v=101" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <h1>Breakfast</h1>
-        <p id="game_date">► Jan 1 2000 ◄</p>
-    </header>
-    <div class="board-container">
-        <div class="board">
-            <div data-row="0" class="row">
-                <div data-row="0" data-column="0" class="peg"></div>
-                <div data-row="0" data-column="1" class="peg"></div>
-                <div data-row="0" data-column="2" class="peg"></div>
-                <div data-row="0" data-column="3" class="peg"></div>
-                <div class="small-pegs">
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                </div>
-            </div>
-            <div data-row="1" class="row">
-                <div data-row="1" data-column="0" class="peg"></div>
-                <div data-row="1" data-column="1" class="peg"></div>
-                <div data-row="1" data-column="2" class="peg"></div>
-                <div data-row="1" data-column="3" class="peg"></div>
-                <div class="small-pegs">
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                </div>
-            </div>
-            <div data-row="2" class="row">
-                <div data-row="2" data-column="0" class="peg"></div>
-                <div data-row="2" data-column="1" class="peg"></div>
-                <div data-row="2" data-column="2" class="peg"></div>
-                <div data-row="2" data-column="3" class="peg"></div>
-                <div class="small-pegs">
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                </div>
-            </div>
-            <div data-row="3" class="row">
-                <div data-row="3" data-column="0" class="peg"></div>
-                <div data-row="3" data-column="1" class="peg"></div>
-                <div data-row="3" data-column="2" class="peg"></div>
-                <div data-row="3" data-column="3" class="peg"></div>
-                <div class="small-pegs">
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                </div>
-            </div>
-            <div data-row="4" class="row">
-                <div data-row="4" data-column="0" class="peg"></div>
-                <div data-row="4" data-column="1" class="peg"></div>
-                <div data-row="4" data-column="2" class="peg"></div>
-                <div data-row="4" data-column="3" class="peg"></div>
-                <div class="small-pegs">
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                </div>
-            </div>
-            <div data-row="5" class="row">
-                <div data-row="5" data-column="0" class="peg"></div>
-                <div data-row="5" data-column="1" class="peg"></div>
-                <div data-row="5" data-column="2" class="peg"></div>
-                <div data-row="5" data-column="3" class="peg"></div>
-                <div class="small-pegs">
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                </div>
-            </div>
-            <div data-row="6" class="row">
-                <div data-row="6" data-column="0" class="peg"></div>
-                <div data-row="6" data-column="1" class="peg"></div>
-                <div data-row="6" data-column="2" class="peg"></div>
-                <div data-row="6" data-column="3" class="peg"></div>
-                <div class="small-pegs">
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                    <div class="small-peg"></div>
-                </div>
-            </div>
-            <div data-row="7" class="row solution">
-                <div data-row="7" data-column="0" class="peg unknown"></div>
-                <div data-row="7" data-column="1" class="peg unknown"></div>
-                <div data-row="7" data-column="2" class="peg unknown"></div>
-                <div data-row="7" data-column="3" class="peg unknown"></div>
-            </div>
+    <div class="modal-container" style="display: none">
+        <div id="tutorial" class="modal" style="display: none">
+            <h3>How to play</h3>
+            <p>Guess the sequence in 7 tries. Each guess will be given four tiles to rate its accuracy; each tile represents one of the pegs in your guess:</p>
+            <div class="small-peg hit"></div><p> - Correct color and position.</p>
+            <div class="small-peg blow"></div><p> - Correct color, wrong position</p>
+            <div class="small-peg empty"></div><p> - Completely wrong</p>
+            <p>The order of these tiles does not matter.</p>
+            <p><i>TIP: There will never be more than two of the same color.</i></p>
+            <div class="close-button">Close</div>
+        </div>
+        <div id="stats" class="modal" style="display: none">
+            <h3>Your stats</h3>
+            <table>
+                <tr>
+                    <td>Games played:</td>
+                    <td><span id="stats_played">0</span></td>
+                </tr>
+                <tr>
+                    <td>Wins:</td>
+                    <td><span id="stats_wins">0</span></td>
+                </tr>
+                <tr>
+                    <td>Win rate:</td>
+                    <td><span id="stats_winrate">0</span>%</td>
+                </tr>
+            </table>
+            <div class="close-button">Close</div>
         </div>
     </div>
-    <div id="status">
-        <p>Guess the sequence!</p>
-    </div>
-    <div id="buttons" class="buttons">
-        <div data-color="0" class="button color-0"></div>
-        <div data-color="1" class="button color-1"></div>
-        <div data-color="2" class="button color-2"></div>
-        <div data-color="3" class="button color-3"></div>
-        <div data-color="4" class="button color-4"></div>
-        <div data-color="5" class="button color-5"></div>
-        <div data-color="6" id="go_button" class="button go">GO</div>
-        <div data-color="7" id="clip_copy" class="button go">Share</div>
-    </div>
+    <main>
+        <header>
+            <div class="header-button-container">
+                <div id="help_button" class="header-button">Help</div>
+            </div>
+            <div class="header-container">
+                <h1>Breakfast</h1>
+                <p id="game_date">► Jan 1 2000 ◄</p>
+            </div>
+            <div class="header-button-container">
+                <div id="stats_button" class="header-button">Stats</div>
+            </div>
+        </header>
+        <div class="board-container">
+            <div class="board">
+                <div data-row="0" class="row">
+                    <div data-row="0" data-column="0" class="peg"></div>
+                    <div data-row="0" data-column="1" class="peg"></div>
+                    <div data-row="0" data-column="2" class="peg"></div>
+                    <div data-row="0" data-column="3" class="peg"></div>
+                    <div class="small-pegs">
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                    </div>
+                </div>
+                <div data-row="1" class="row">
+                    <div data-row="1" data-column="0" class="peg"></div>
+                    <div data-row="1" data-column="1" class="peg"></div>
+                    <div data-row="1" data-column="2" class="peg"></div>
+                    <div data-row="1" data-column="3" class="peg"></div>
+                    <div class="small-pegs">
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                    </div>
+                </div>
+                <div data-row="2" class="row">
+                    <div data-row="2" data-column="0" class="peg"></div>
+                    <div data-row="2" data-column="1" class="peg"></div>
+                    <div data-row="2" data-column="2" class="peg"></div>
+                    <div data-row="2" data-column="3" class="peg"></div>
+                    <div class="small-pegs">
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                    </div>
+                </div>
+                <div data-row="3" class="row">
+                    <div data-row="3" data-column="0" class="peg"></div>
+                    <div data-row="3" data-column="1" class="peg"></div>
+                    <div data-row="3" data-column="2" class="peg"></div>
+                    <div data-row="3" data-column="3" class="peg"></div>
+                    <div class="small-pegs">
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                    </div>
+                </div>
+                <div data-row="4" class="row">
+                    <div data-row="4" data-column="0" class="peg"></div>
+                    <div data-row="4" data-column="1" class="peg"></div>
+                    <div data-row="4" data-column="2" class="peg"></div>
+                    <div data-row="4" data-column="3" class="peg"></div>
+                    <div class="small-pegs">
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                    </div>
+                </div>
+                <div data-row="5" class="row">
+                    <div data-row="5" data-column="0" class="peg"></div>
+                    <div data-row="5" data-column="1" class="peg"></div>
+                    <div data-row="5" data-column="2" class="peg"></div>
+                    <div data-row="5" data-column="3" class="peg"></div>
+                    <div class="small-pegs">
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                    </div>
+                </div>
+                <div data-row="6" class="row">
+                    <div data-row="6" data-column="0" class="peg"></div>
+                    <div data-row="6" data-column="1" class="peg"></div>
+                    <div data-row="6" data-column="2" class="peg"></div>
+                    <div data-row="6" data-column="3" class="peg"></div>
+                    <div class="small-pegs">
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                        <div class="small-peg"></div>
+                    </div>
+                </div>
+                <div data-row="7" class="row solution">
+                    <div data-row="7" data-column="0" class="peg unknown"></div>
+                    <div data-row="7" data-column="1" class="peg unknown"></div>
+                    <div data-row="7" data-column="2" class="peg unknown"></div>
+                    <div data-row="7" data-column="3" class="peg unknown"></div>
+                </div>
+            </div>
+        </div>
+        <div id="status">
+            <p>Guess the sequence!</p>
+        </div>
+        <div id="buttons" class="buttons">
+            <div data-color="0" class="button color-0"></div>
+            <div data-color="1" class="button color-1"></div>
+            <div data-color="2" class="button color-2"></div>
+            <div data-color="3" class="button color-3"></div>
+            <div data-color="4" class="button color-4"></div>
+            <div data-color="5" class="button color-5"></div>
+            <div data-color="6" id="go_button" class="button go">GO</div>
+            <div data-color="7" id="clip_copy" class="button go">Share</div>
+        </div>
+    </main>
     <script src="jquery.js?v=360"></script>
-    <script src="game.js?v=100"></script>
+    <script src="game.js?v=101"></script>
 </body>
 </html>
