@@ -2,9 +2,101 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <title>krgamedev</title>
+        <style>
+            html {
+                background: #181425;
+                color: white;
+            }
+            body {
+                font-family: Helvetica, Arial, sans-serif;
+                width: 500px;
+                max-width: 100%;
+            }
+            header {
+                padding-left: 25px;
+            }
+            h1 {
+                font-weight: normal;
+            }
+            .game {
+                text-decoration: none !important;
+                color: white;
+            }
+            .game div {
+                display: block;
+                clear: both;
+                overflow: hidden;
+                padding: 25px;
+            }
+            .game:hover div {
+                background: #1d1c30;
+            }
+            .game h2 {
+                font-size: 24px;
+                line-height: 18px;
+                font-family: cambria, georgia, serif;
+                font-weight: normal;
+            }
+            .game p {
+                color: #aaa;
+                font-size: 12px;
+            }
+            .game img {
+                float: left;
+                border-radius: 6px;
+                margin-right: 36px;
+                width: 96px;
+                height: 96px;
+                border: 1px solid #262b44;
+            }
+            footer {
+                padding-top: 25px;
+                padding-left: 25px;
+                color: #777;
+                font-size: 12px;
+            }
+            footer a {
+                color: #aaa;
+                text-decoration: none;
+            }
+        </style>
     </head>
     <body>
-        <p>placeholder</p>
+        <header>
+            <h1>krgamedev</h1>
+        </header>
+        <a class="game" href="https://krgamedev.github.io/breakfast/" target="_blank">
+            <div>
+                <img src="./breakfast/apple-touch-icon.png" />
+                <h2>breakfast</h2>
+                <p>daily code-breaking puzzle</p>
+            </div>
+        </a>
+        <a class="game" href="https://krgamedev.itch.io/word-whip" target="_blank">
+            <div>
+                <img src="./img/ww.png" />
+                <h2>word whip</h2>
+                <p>fill-in-the-blanks word game</p>
+            </div>
+        </a>
+        <a class="game" href="https://krgamedev.itch.io/tiles" target="_blank">
+            <div>
+                <img src="./img/tt.png" />
+                <h2>triple tiles</h2>
+                <p>match-3 board game</p>
+            </div>
+        </a>
+        <a class="game" href="https://krgamedev.itch.io/stack-and-defend" target="_blank">
+            <div>
+                <img src="./img/sd.png" />
+                <h2>stack &amp; defend</h2>
+                <p>reverse angry birds</p>
+            </div>
+        </a>
+        <footer>
+            <p><a href="https://krgamedev.itch.io/">itch.io</a> | <a href="https://github.com/krgamedev">github</a></p>
+        </footer>
     </body>
 </html>
