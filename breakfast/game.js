@@ -58,7 +58,7 @@ else if (order == 7) { solution = [solution[0], solution[3], solution[2], soluti
 // Get puzzle number
 var diffMs = new Date(theYear.toString() + "-" + theMonth.toString() + "-" + theDay.toString()) - new Date('2022-1-14');
 var diffDays = diffMs / (1000 * 60 * 60 * 24);
-puzzleNumber = diffDays+1;
+puzzleNumber = Math.floor(diffDays+1);
 
 
 // Print date
